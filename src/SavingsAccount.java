@@ -1,10 +1,14 @@
-public class SavingsAccount extends BankAccount {
+import baseaccounts.DepositableBankAccount;
+
+public class SavingsAccount extends DepositableBankAccount implements Interestable {
 
     private int withdrawalCounter = 0;
     private final int WITHDRAWAL_LIMIT = 2;
+    private double interestRate;
 
     public SavingsAccount(String accountNumber, double balance) {
         super(accountNumber, balance);
+        interestRate = 0.2;
     }
 
     @Override
@@ -14,4 +18,8 @@ public class SavingsAccount extends BankAccount {
         }
     }
 
+    @Override
+    public void addInterest() {
+        deposit(getBalance() * interestRate);
+    }
 }

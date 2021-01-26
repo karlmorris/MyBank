@@ -1,4 +1,6 @@
-public class BankAccount {
+package baseaccounts;
+
+public abstract class BankAccount {
     private String accountNumber;
     private double balance;
 
@@ -15,14 +17,13 @@ public class BankAccount {
         return balance;
     }
 
-    public void deposit(double amount) {
-        if (amount > 0)
-            this.balance += amount;
-    }
-
     public void withdraw (double amount) {
         if (amount > 0)
             this.balance -= amount;
+    }
+
+    void setBalance (double balance) {
+        this.balance = balance;
     }
 
 

@@ -1,10 +1,20 @@
-public class CheckingAccount extends BankAccount {
+import baseaccounts.BankAccount;
+import baseaccounts.DepositableBankAccount;
+
+public class CheckingAccount extends DepositableBankAccount {
 
     private final double OVERDRAFT_LIMIT = 200;
     private final double OVERDRAFT_FEE = 30;
 
     public CheckingAccount(String accountNumber, double balance) {
         super(accountNumber, balance);
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        if (amount <= getBalance()){
+            super.withdraw(amount);
+        }
     }
 
     public void writeCheck(double amount) {
